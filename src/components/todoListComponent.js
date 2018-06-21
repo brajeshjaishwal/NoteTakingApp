@@ -37,13 +37,22 @@ class ToDoListComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(`todoListComponent: ${state}`)
+    //console.log(`todoListComponent: ${state}`)
     return {
         todos: state
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchAll: () => dispatch(fetchToDoList()
+                .then(response => response.json)
+                .then(todos => fetchToDoListSucceded(todos))
+                .catch(error => fetchToDoListFailed(error))
+        )
+    }
+}
+const mapDispatchToProps11 = dispatch => {
     return {
         fetchAll: () => dispatch(fetchToDoList())
                         .then(response => 

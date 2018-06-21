@@ -6,7 +6,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-notes = {}
+notes = {1: {'id': 1, 'title': 'I', 'detail': 'My first note', 'done': False},
+         2: {'id': 2, 'title': 'II', 'detail': 'My second note', 'done': False}}
 
 @app.route("/", methods=['GET', 'POST'])
 def notes_list():
